@@ -1,0 +1,5 @@
+dependencies:
+  flutter:
+    sdk: flutter
+  speech_to_text: ^6.6.0 # Reconocimiento de voz nativo
+  flutter_tts: ^3.8.5     # Lectura de texto nativa
