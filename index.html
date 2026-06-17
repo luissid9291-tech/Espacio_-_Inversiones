@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espacio & Inversión | Asesoría Integral en Construcción</title>
+    <style>
+        /* --- VARIABLES DE DISEÑO --- */
+        :root {
+            --color-primario: #1a365d;
+            --color-secundario: #d69e2e;
+            --color-fondo: #f7fafc;
+            --color-texto: #2d3748;
+            --color-blanco: #ffffff;
+            --color-aviso: #f6ad55; /* Naranja suave para el banner */
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--color-fondo); color: var(--color-texto); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; padding: 12px 28px; background-color: var(--color-secundario); color: var(--color-blanco); border-radius: 5px; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
+        .btn:hover { background-color: #b7791f; transform: translateY(-2px); }
+
+        /* --- BANNER INFORMATIVO --- */
+        .banner-aviso {
+            background-color: var(--color-aviso);
+            color: #744210;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .banner-aviso strong { color: #1a202c; }
+        .banner-aviso a { color: #1a365d; text-decoration: underline; font-weight: bold; }
+
+        /* --- HEADER & NAV --- */
+        header { background-color: var(--color-blanco); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--color-primario); }
+        .logo span { color: var(--color-secundario); }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--color-secundario); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        /* --- HERO (INICIO) --- */
+        #inicio { background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.85)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; color: var(--color-blanco); text-align: center; padding: 100px 20px; }
+        #inicio h1 { font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
+        #inicio p { font-size: 1.1rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* --- SECCIONES GENERALES --- */
+        section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--color-primario); margin-bottom: 50px; }
+        .section-title span { border-bottom: 3px solid var(--color-secundario); padding-bottom: 10px; }
+
+        /* --- SERVICIOS --- */
+        .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .servicio-card { background: var(--color-blanco); padding: 30px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
+        .servicio-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .servicio-icon { font-size: 2.5rem; color: var(--color-secundario); margin-bottom: 15px; }
+
+        /* --- PROYECTOS / PORTAFOLIO --- */
+        #proyectos { background-color: var(--color-blanco); }
+        .proyectos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .proyecto-item { height: 250px; background-color: #e2e8f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #718096; font-weight: bold; border: 2px dashed #cbd5e0; }
+
+        /* --- NOSOTROS --- */
+        .nosotros-content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
+        .nosotros-text { flex: 1; min-width: 300px; }
+        .nosotros-img { flex: 1; min-width: 300px; height: 300px; background-color: #cbd5e0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #718096; }
+
+        /* --- CONTACTO --- */
+        #contacto { background-color: var(--color-primario); color: var(--color-blanco); }
+        #contacto .section-title { color: var(--color-blanco); }
+        .contacto-wrapper { display: flex; gap: 40px; flex-wrap: wrap; }
+        .contacto-info, .contacto-form { flex: 1; min-width: 300px; }
+        .contacto-form input, .contacto-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 5px; font-size: 1rem; }
+        .contacto-form button { width: 100%; }
+
+        /* --- FOOTER & ESTADÍSTICAS --- */
+        footer { background-color: #1a202c; color: #a0aec0; text-align: center; padding: 30px 0 20px; font-size: 0.9rem; }
+        .stats-box { margin-top: 20px; padding-top: 20px; border-top: 1px solid #2d3748; font-size: 0.85rem; }
+        .stats-box strong { color: var(--color-secundario); }
+
+        /* --- WHATSAPP FLOTANTE --- */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: var(--color-blanco); padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            #inicio h1 { font-size: 2rem; }            .banner-aviso { font-size: 0.8rem; padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BANNER INFORMATIVO (NUEVO) -->
+    <div class="banner-aviso">
+        <strong>⚠️ AVISO:</strong> Esta página es una versión de prueba. Para consultas personalizadas, envía tus dudas a <a href="mailto:coraasisstant@protonmail.com">coraasisstant@protonmail.com</a>. Próximamente agregaremos más canales de comunicación.
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Espacio & <span>Inversión</span></div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto" class="btn">Contáctanos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO / INICIO -->
+    <section id="inicio">
+        <div class="container">
+            <h1>Diseñamos Espacios, Maximizamos tu Inversión</h1>
+            <p>Asesoría integral en construcción: desde la optimización del diseño hasta la selección estratégica de materiales para garantizar el mayor retorno de tu proyecto.</p>
+            <a href="#contacto" class="btn">Solicita tu Asesoría Gratuita</a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title"><span>Nuestros Servicios</span></h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">📐</div>
+                    <h3>Asesoría en Diseño</h3>
+                    <p>Optimización de espacios enfocada en funcionalidad y plusvalía.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🧱</div>
+                    <h3>Selección de Materiales</h3>                    <p>Elección estratégica según presupuesto, durabilidad y valor de reventa.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🏗️</div>
+                    <h3>Gestión de Obra</h3>
+                    <p>Supervisión profesional para que tu proyecto se ejecute sin contratiempos.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">📈</div>
+                    <h3>Consultoría de Inversión</h3>
+                    <p>Análisis de rentabilidad: ¿conviene construir, remodelar o comprar?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS / PORTAFOLIO -->
+    <section id="proyectos">
+        <div class="container">
+            <h2 class="section-title"><span>Proyectos Destacados</span></h2>
+            <div class="proyectos-grid">
+                <div class="proyecto-item">Render / Foto Proyecto 1</div>
+                <div class="proyecto-item">Render / Foto Proyecto 2</div>
+                <div class="proyecto-item">Render / Foto Proyecto 3</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros">
+        <div class="container">
+            <h2 class="section-title"><span>Sobre Nosotros</span></h2>
+            <div class="nosotros-content">
+                <div class="nosotros-img">
+                    [Foto del Equipo o Director]
+                </div>
+                <div class="nosotros-text">
+                    <p>Somos un equipo dedicado a transformar metros cuadrados en oportunidades de inversión inteligentes. Creemos que cada detalle, desde el diseño hasta el último material, impacta directamente en el valor final de tu propiedad.</p>
+                    <br>
+                    <a href="#contacto" class="btn">Conoce más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title"><span>Hablemos de tu Proyecto</span></h2>
+            <div class="contacto-wrapper">                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <br>
+                    <p>📍 Dirección: [Tu ciudad / Oficina]</p>
+                    <p>📧 Email: <a href="mailto:coraasisstant@protonmail.com" style="color: var(--color-secundario);">coraasisstant@protonmail.com</a></p>
+                    <p>📱 Teléfono: +XX XXX XXX XXX</p>
+                </div>
+                <div class="contacto-form">
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias! Este es un demo. En la versión final, este mensaje te llegará a tu correo.');">
+                        <input type="text" placeholder="Tu Nombre" required>
+                        <input type="email" placeholder="Tu Correo Electrónico" required>
+                        <input type="tel" placeholder="Tu Teléfono / WhatsApp">
+                        <textarea rows="4" placeholder="Cuéntanos brevemente sobre tu proyecto o duda..." required></textarea>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CON CONTADOR Y UBICACIÓN -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Espacio & Inversión. Todos los derechos reservados.</p>
+            
+            <div class="stats-box">
+                <p>📊 Visitas únicas al sitio: <strong id="contador-visitas">Cargando...</strong></p>
+                <p>📍 Conexión actual desde: <strong id="ubicacion-visitante">Cargando...</strong></p>
+                <p style="font-size: 0.75rem; margin-top: 8px; color: #718096;">*Datos aproximados con fines de transparencia y estadística.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/XXXXXXXXXXX" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+        💬
+    </a>
+
+    <!-- JAVASCRIPT PARA FUNCIONALIDADES -->
+    <script>
+        // 1. Menú responsive
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });        });
+
+        // 2. CONTADOR MEJORADO (Cuenta visitas únicas por dispositivo)
+        function actualizarContador() {
+            let visitas = localStorage.getItem('visitas_unicas') || 0;
+            let yaVisito = localStorage.getItem('ya_visito');
+            
+            if (!yaVisito) {
+                visitas = parseInt(visitas) + 1;
+                localStorage.setItem('visitas_unicas', visitas);
+                localStorage.setItem('ya_visito', 'true');
+            }
+            
+            document.getElementById("contador-visitas").innerText = visitas;
+        }
+        actualizarContador();
+
+        // 3. UBICACIÓN APROXIMADA
+        fetch("https://ipwho.is/")
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("ubicacion-visitante").innerText = `${data.city}, ${data.country}`;
+                } else {
+                    document.getElementById("ubicacion-visitante").innerText = "Ubicación no disponible";
+                }
+            })
+            .catch(error => {
+                console.log("Error al cargar ubicación:", error);
+                document.getElementById("ubicacion-visitante").innerText = "No disponible";
+            });
+    </script>
+</body>
+</html>
